@@ -8,7 +8,7 @@ import requests
 import json
 from frappe.core.doctype.sms_settings.sms_settings import send_sms
 from frappe.utils.password import decrypt, encrypt
-from clientside.stripe import StripeSubscriptionManager
+from mysaas.stripe import StripeSubscriptionManager
 import socket
 
 

@@ -14,6 +14,10 @@ import os
 import datetime
 import shutil
 
+def boot_session(boot):
+    print(frappe.conf.customer_portal)
+    boot.customer_portal = frappe.conf.customer_portal
+
 @frappe.whitelist()
 def get_days_since_creation(folder_path):
     try:

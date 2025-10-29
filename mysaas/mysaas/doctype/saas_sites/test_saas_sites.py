@@ -3,7 +3,7 @@
 
 import frappe
 from frappe.tests.utils import FrappeTestCase
-from clientside.stripe import StripeSubscriptionManager
+from mysaas.stripe import StripeSubscriptionManager
 
 
 class TestSaaSsites(FrappeTestCase):

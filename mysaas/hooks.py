@@ -13,6 +13,10 @@ app_license = "mit"
 # include js, css files in header of desk.html
 # app_include_css = "/assets/mysaas/css/mysaas.css"
 # app_include_js = "/assets/mysaas/js/mysaas.js"
+app_include_css = [
+    "/assets/mysaas/css/usage_info.css",
+    "/assets/mysaas/css/clientside.css",
+]
 
 # include js, css files in header of web template
 # web_include_css = "/assets/mysaas/css/mysaas.css"
@@ -27,6 +31,7 @@ app_license = "mit"
 
 # include js in page
 # page_js = {"page" : "public/js/file.js"}
+page_js = {"/": "public/js/file.js"}
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
@@ -64,7 +69,8 @@ app_license = "mit"
 # ------------
 
 # before_install = "mysaas.install.before_install"
-# after_install = "mysaas.install.after_install"
+after_install = "mysaas.mysaas.utils.post_install"
+boot_session = "mysaas.api.boot_session"
 
 # Uninstallation
 # ------------
@@ -94,9 +100,9 @@ app_license = "mit"
 # ---------------
 # Override standard doctype classes
 
-# override_doctype_class = {
-# 	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+override_doctype_class = {
+    "Communication": "mysaas.mysaas.overrides.communication.CommunicationOverride",
+}
 
 # Document Events
 # ---------------
@@ -155,9 +161,11 @@ scheduler_events = {
 # Overriding Methods
 # ------------------------------
 #
-# override_whitelisted_methods = {
-# 	"frappe.desk.doctype.event.event.get_events": "mysaas.event.get_events"
-# }
+override_whitelisted_methods = {
+    "frappe.client.save": "mysaas.mysaas.overrides.globals.saveOverride",
+    "frappe.desk.form.save.savedocs": "mysaas.mysaas.overrides.globals.savedocsoverride",
+    "frappe.desk.page.backups.backups.schedule_files_backup": "mysaas.mysaas.overrides.globals.schedule_files_backup",
+}
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
@@ -216,5 +224,13 @@ scheduler_events = {
 # 	"mysaas.auth.validate"
 # ]
 app_include_js = [
-    "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+    "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js",
+    "/assets/mysaas/js/client.js",
+    "/assets/mysaas/js/file.js",
+    "/assets/mysaas/js/notification.js",
+    "/assets/mysaas/js/web_form.js",
+    "/assets/mysaas/js/user.js",
+]
+website_redirects = [
+    {"source": "/app/backups", "target": "/app/onehash-backups"}
 ]

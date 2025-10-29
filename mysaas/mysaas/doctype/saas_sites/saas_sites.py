@@ -13,7 +13,7 @@ import re
 import subprocess as sp
 import requests
 from frappe.utils import today, nowtime, add_days, get_formatted_email
-from clientside.stripe import StripeSubscriptionManager
+from mysaas.stripe import StripeSubscriptionManager
 from mysaas.mysaas.api import upgrade_site
 		
 @frappe.whitelist()
@@ -341,7 +341,7 @@ def setupSite(*args, **kwargs):
     frappe.db.commit()
     # create stripe subscription
     subscription.start_free_trial_of_site(customer.id)
-    from clientside.stripe import hasActiveSubscription
+    from mysaas.stripe import hasActiveSubscription
 
     hasActiveSubscription(invalidate_cache=True, site=new_site)
 
@@ -386,7 +386,7 @@ def getDecryptedPassword(*args, **kwargs):
 @frappe.whitelist(allow_guest=True)
 def take_backup_of_site(sitename, is_manual=0):
     command = (
-        "bench --site {} execute clientside.clientside.utils.take_backups_s3 ".format(
+        "bench --site {} execute mysaas.mysaas.utils.take_backups_s3 ".format(
             sitename
         )
     )
@@ -512,7 +512,7 @@ def get_site_backup_size(sitename):
         fields=["backup_size"],
         ignore_permissions=True,
     )
-    from clientside.clientside.utils import convertToB
+    from mysaas.mysaas.utils import convertToB
 
     return sum([float(convertToB(doc.backup_size)) for doc in docs])
 
