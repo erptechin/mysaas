@@ -4,15 +4,15 @@ include *.json
 include *.md
 include *.py
 include *.txt
-recursive-include bettersaas *.css
-recursive-include bettersaas *.csv
-recursive-include bettersaas *.html
-recursive-include bettersaas *.ico
-recursive-include bettersaas *.js
-recursive-include bettersaas *.json
-recursive-include bettersaas *.md
-recursive-include bettersaas *.png
-recursive-include bettersaas *.py
-recursive-include bettersaas *.svg
-recursive-include bettersaas *.txt
-recursive-exclude bettersaas *.pyc
+recursive-include mysaas *.css
+recursive-include mysaas *.csv
+recursive-include mysaas *.html
+recursive-include mysaas *.ico
+recursive-include mysaas *.js
+recursive-include mysaas *.json
+recursive-include mysaas *.md
+recursive-include mysaas *.png
+recursive-include mysaas *.py
+recursive-include mysaas *.svg
+recursive-include mysaas *.txt
+recursive-exclude mysaas *.pyc

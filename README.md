@@ -1,4 +1,4 @@
-## Bettersaas
+## Mysaas
 
 This app manages multi tenancy
 
