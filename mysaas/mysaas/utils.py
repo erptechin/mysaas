@@ -293,7 +293,7 @@ def installApps(*args, **kwargs):
 
 
 def post_install():
-    createRole("OneHash Manager")
+    createRole("SASS Manager")
     changeERPNames()
     add_options()
 
@@ -554,3 +554,53 @@ def schedule_files_backup():
 
 
 
+def createRole(role_name):
+    print("creating role " + role_name)
+    role = frappe.get_doc(
+        {
+            "doctype": "Role",
+            "role_name": role_name,
+            "desk_access": 1,
+        }
+    )
+    role.insert(ignore_permissions=True)
+    return role.name
+
+
+def add_options():
+    navbar_settings = frappe.get_single("Navbar Settings")
+    # if frappe.db.exists("Navbar Item", {"item_label": "Usage Infooo"}):
+    #     return
+
+    navbar_settings.append(
+        "settings_dropdown",
+        {
+            "item_label": "Usage Info",
+            "item_type": "Action",
+            "action": "frappe.set_route('Form','Usage-Info')",
+            "is_standard": 1,
+            "idx": 5,
+        },
+    )
+    navbar_settings.append(
+        "settings_dropdown",
+        {
+            "item_label": "Marketplace",
+            "item_type": "Action",
+            "action": "frappe.set_route('Form','market-place')",
+            "is_standard": 1,
+            "idx": 6,
+        },
+    )
+    navbar_settings.append(
+        "settings_dropdown",
+        {
+            "item_label": "Background Jobs",
+            "item_type": "Action",
+            "action": "frappe.set_route('Form','background_jobs')",
+            "is_standard": 1,
+            "idx": 7,
+        },
+    )
+
+    navbar_settings.save()
