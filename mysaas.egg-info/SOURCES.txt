@@ -13,6 +13,7 @@ mysaas.egg-info/SOURCES.txt
 mysaas.egg-info/dependency_links.txt
 mysaas.egg-info/not-zip-safe
 mysaas.egg-info/top_level.txt
+mysaas/config/__init__.py
 mysaas/mysaas/__init__.py
 mysaas/mysaas/api.py
 mysaas/mysaas/doctype/__init__.py
@@ -88,7 +89,6 @@ mysaas/mysaas/page/add_on_apps/__init__.py
 mysaas/mysaas/page/add_on_apps/add_on_apps.html
 mysaas/mysaas/page/add_on_apps/add_on_apps.js
 mysaas/mysaas/page/add_on_apps/add_on_apps.json
-mysaas/config/__init__.py
 mysaas/public/hero.png
 mysaas/public/hero.svg
 mysaas/public/hero1.png

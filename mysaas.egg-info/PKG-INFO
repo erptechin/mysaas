@@ -1,6 +1,9 @@
-Metadata-Version: 2.1
+Metadata-Version: 2.4
 Name: mysaas
 Version: 0.0.1
 Summary: This app manages multi tenancy
 Author: OneHash
 Author-email: digital@onehash.ai
+Dynamic: author
+Dynamic: author-email
+Dynamic: summary
